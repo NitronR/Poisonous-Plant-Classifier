@@ -43,11 +43,25 @@ $(document).ready(function () {
             async: true,
             success: function (data) {
                 // Get and display the result
+                data = JSON.parse(data);
+
                 $('.loader').hide();
                 $('#result').fadeIn(600);
-                $('#result').text(' Prediction:  ' + data);
+                if (data.prob > 0.5) {
+                    $('#result').html('<b>Prediction:</b>  ' + data.result);
+                } else {
+                    $('#result').text('Not sure what this is.');
+                }
+                $('#result').append('<br/><b>Surity:</b>  ' + Math.round(data.prob * 100) + '%');
             },
+            error: function () {
+                $('#result').text('Network error: Please ensure a strong internet connection.');
+            }
         });
     });
 
 });
+
+function round(val, places) {
+    return Math.round(val * 100) / 100;
+}

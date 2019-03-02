@@ -13,6 +13,7 @@ from fastai.vision import *
 # Flask utils
 from flask import Flask, redirect, url_for, request, render_template
 from werkzeug.utils import secure_filename
+import json
 # from gevent.pywsgi import WSGIServer
 
 # Define a flask app
@@ -34,9 +35,7 @@ def model_predict(img_path):
     img = open_image(img_path)
     pred_class, pred_idx, outputs = learn.predict(img)
     result = str(pred_class)
-    if(outputs[pred_idx] <= 0.5):
-        result = 'Not sure what this is!'
-    return result
+    return json.dumps({'result':result, 'prob':float(outputs[pred_idx])})
 
 
 @app.route('/', methods=['GET'])
