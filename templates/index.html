@@ -1,31 +1,60 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
 
-<h2>Upload Your Image</h2>
+{% block head %}
+<style>
+    .animated {
+        display: inline-block;
+    }
+</style>
+{% endblock %}
 
-<div>
-    <form id="upload-file" method="post" enctype="multipart/form-data">
-        <label for="imageUpload" class="upload-label">
-            Upload...
-        </label>
-        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
-    </form>
+{% block content %}
+<div class='container'>
+    <h1>
+        <div class='animated fadeInLeft'>Poisonous</div>
+        <div class='animated fadeInDown'>Plant</div>
+        <div class='animated fadeInRight'>Classifier</div>
+    </h1>
+    <br>
+    <h2>Upload Your Image</h2>
+    <br>
+    <div style="min-height:200px;">
+        <form id="upload-file" method="post" enctype="multipart/form-data">
+            <label for="imageUpload" class="upload-label">
+                Upload...
+            </label>
+            <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+        </form>
 
-    <div class="image-section" style="display:none;">
-        <div class="img-preview">
-            <div id="imagePreview">
+        <div class="image-section" style="display:none;text-align:center;">
+            <div class="img-preview">
+                <div id="imagePreview">
+                </div>
+            </div>
+            <br>
+            <div>
+                <button type="button" class="btn btn-primary btn-lg " id="btn-predict">Predict!</button>
             </div>
         </div>
-        <div>
-            <button type="button" class="btn btn-primary btn-lg " id="btn-predict">Predict!</button>
+
+        <div class="loader" style="display:none;"></div>
+
+        <div id="result">
+            <span> </span>
         </div>
     </div>
+</div>
+<br>
+<br>
+<div id='about'>
+    <h1>About</h1>
+    <hr color='white'>
 
-    <div class="loader" style="display:none;"></div>
-
-    <div id="result">
-        <span> </span>
-    </div>
-
+    <h3>Made by Bhanu Pratap Singh Rathore</h3>
+    <a href="https://github.com/NitronR/Poisonous-Plant-Classifier">GitHub</a> |
+    <a href="https://www.kaggle.com/nitron/poisonous-plant-classifier">Kaggle Kernel</a> |
+    <a href="https://www.linkedin.com/in/bhanu-psr/">LinkedIn</a> |
+    <a href="https://www.goodhousekeeping.com/home/gardening/advice/g1174/deadly-poisonous-plants">Descriptions from here</a><br>
 </div>
 
 {% endblock %}
