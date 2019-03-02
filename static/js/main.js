@@ -45,23 +45,30 @@ $(document).ready(function () {
                 // Get and display the result
                 data = JSON.parse(data);
 
-                $('.loader').hide();
-                $('#result').fadeIn(600);
-                if (data.prob > 0.5) {
-                    $('#result').html('<b>Prediction:</b>  ' + data.result);
+                if (data.prob > 0.8) {
+                    $('#result').html('<b>Prediction:</b>  ' + formatName(data.result));
+                    $('#result').append('<br/><b>Surity:</b>  ' + round(data.prob * 100) + '%');
                 } else {
                     $('#result').text('Not sure what this is.');
                 }
-                $('#result').append('<br/><b>Surity:</b>  ' + Math.round(data.prob * 100) + '%');
             },
-            error: function () {
-                $('#result').text('Network error: Please ensure a strong internet connection.');
+            complete: function (xhr, status) {
+                $('.loader').hide();
+                $('#result').fadeIn(600);
+                if (status == 'error') {
+                    $('#result').text('Network error: Please ensure a strong internet connection.');
+                }
             }
-        });
+        })
     });
 
 });
 
 function round(val, places) {
     return Math.round(val * 100) / 100;
+}
+
+function formatName(string) {
+    string = string.replace(/_/g, ' ');
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
