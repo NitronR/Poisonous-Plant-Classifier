@@ -5,9 +5,9 @@ One solution to this problem is image classification using deep learning. Keepin
 
 I have made the data set available [on Kaggle](https://www.kaggle.com/nitron/poisonous-plants-images).
 
-Using fastai, I have successfully created an Image classifier for classifying a plant's image into 8 categories of poisonous plants. Create a Convolutional Neural Network and improved the model through interpretation as well as fine tuning. The classifier have 97% accuracy on the current test set. [Here](https://www.kaggle.com/nitron/poisonous-plant-classifier) is the Kaggle kernel.
+Using fastai, I have successfully created an Image classifier for classifying a plant's image into 8 categories of poisonous plants. These are: lilies, rhubarb, oleander, castor oil plant, dieffenbachia, foxglove, wisteria and lily of the valley. Create a Convolutional Neural Network and improved the model through interpretation as well as fine tuning. The classifier have 93% accuracy on the current test set. [Here](https://www.kaggle.com/nitron/poisonous-plant-classifier-renset18) is the Kaggle kernel.
 
-This repository is for the web app that classifies an image into 8 categories of plants using a resnet18 model.
+This repository is for the web app that can take an image file as input and classifies it into the 8 categories of plants mentioned above using a resnet18 model.
 
 I took help from [this repository](https://github.com/shankarj67/Water-classifier-fastai) on Water classification that provides the boiler plate code to deploy a fastai model on heroku.
 
